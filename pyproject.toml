@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cut-content-anything"
+version = "0.2.0"
+description = "Find and preview possibly unused content in game data you legally own: maps, models, textures, sounds and text, with a local web gallery."
+readme = "README.md"
+requires-python = ">=3.10"
+# The licence for the project's own code has not been chosen yet. See README.md.
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Environment :: Web Environment",
+    "Topic :: Games/Entertainment",
+]
+dependencies = []
+
+[project.scripts]
+cutcontent = "cutcontent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["cutcontent*"]
+
+[tool.setuptools.package-data]
+cutcontent = ["web/static/*", "web/static/vendor/three/*"]

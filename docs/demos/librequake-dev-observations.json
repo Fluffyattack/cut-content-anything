@@ -1,0 +1,61 @@
+{
+  "test": "fresh finding card to actual engine gameplay",
+  "executed_on": "2026-11-10",
+  "game": "LibreQuake v0.09-beta Lite",
+  "map": "maps/dev.bsp",
+  "interface_language": "English",
+  "passed": true,
+  "source_sha256": {
+    "pak0.pak": "0dd895a425e75d9908025dcfe340f75f5b8166ada68b2d7ee54d8d91d29378ff",
+    "pak1.pak": "28423c01836341d9e3c6465b407a44ae94e4e29e954544a67739686850e39365"
+  },
+  "release_source": "https://github.com/lavenderdotpet/LibreQuake/releases/tag/v0.09-beta",
+  "release_scope": "asset_distribution",
+  "runtime": {
+    "facts": "Included in the release · Direct launch tested · No regular access found",
+    "source_spawn": [
+      -1024.0,
+      -688.0,
+      24.0
+    ],
+    "initial": {
+      "loaded": true,
+      "map": "dev",
+      "position": [
+        -1024,
+        -688,
+        8.031
+      ],
+      "entities": 125,
+      "server_time": 2.651
+    },
+    "settled_without_input": {
+      "loaded": true,
+      "map": "dev",
+      "position": [
+        -1024,
+        -688,
+        8.031
+      ],
+      "entities": 125,
+      "server_time": 3.574
+    },
+    "after_walking": {
+      "loaded": true,
+      "map": "dev",
+      "position": [
+        -175.862,
+        -688,
+        -23.969
+      ],
+      "entities": 127,
+      "server_time": 5.733
+    },
+    "near_source_spawn": true,
+    "horizontal_distance_squared": 719338.067044
+  },
+  "actual_preview_orbit_changed": true,
+  "page_errors": [],
+  "source_files_unchanged": true,
+  "released_data_not_mislabelled_unreleased": true
+}

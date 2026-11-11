@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Never commit game data, disc or cartridge images, saves or local reports.
+# (scripts/check_publication.py additionally allows only source, documentation and screenshots.)
+*.pak
+*.bsp
+*.mdl
+*.iso
+*.bin
+*.cue
+*.chd
+*.sav
+*.state
+*.wasm
+local/
+reports/
+test-output/
+
+# Editors and systems
+.DS_Store
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit and integration tests (self-made data only)
+        run: python -m unittest discover -s tests -t tests -v
+      - name: Directory page is generated from valid data
+        run: python -m cutcontent directory check
+      - name: Skill copies are in sync
+        run: python -m cutcontent skill sync --check
+      - name: Publication check (files and history)
+        run: python scripts/check_publication.py

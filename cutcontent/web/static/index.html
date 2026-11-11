@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="cutcontent-token" content="__SESSION_TOKEN__">
+  <title>Cut Content Anything</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script type="module" src="/static/app.js"></script>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">✂</span>
+      <div>
+        <h1>Cut Content Anything</h1>
+        <p class="tagline">Possibly unused content in game data you own — read-only, local only.</p>
+      </div>
+    </div>
+    <nav class="top-actions">
+      <button id="refresh-library" type="button" disabled>Refresh library</button>
+      <button id="show-formats" type="button">Supported formats</button>
+      <button id="show-doctor" type="button" class="status-pill" title="Setup check (cutcontent doctor)">Setup check</button>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" aria-label="Games and builds">
+      <section>
+        <h2>Allowed folders</h2>
+        <p class="hint">The interface can only read inside these folders. Add more with <code>cutcontent folders add &lt;folder&gt;</code> or <code>CUT_CONTENT_ROM_DIR</code>.</p>
+        <ul id="folder-list" class="folder-list"></ul>
+      </section>
+      <section>
+        <h2>Games and builds</h2>
+        <div id="game-list" class="game-list"><p class="hint">Loading…</p></div>
+      </section>
+    </aside>
+
+    <main id="main" class="main">
+      <section id="welcome" class="welcome">
+        <h2>Pick a game or build on the left</h2>
+        <p>Scan it, then browse the gallery: open levels in 3D, turn models around, zoom into textures and listen to sounds.
+           Every item shows four separate statements: <em>present in the data</em>, <em>possibly unused</em>,
+           <em>loaded under test conditions</em> and <em>reachable in normal play</em>.</p>
+        <p class="hint">No game in the list? Create the self-made demo with <code>cutcontent demo create</code>
+           or fetch the free LibreQuake data with <code>cutcontent demo librequake</code>, then press “Refresh library”.</p>
+      </section>
+
+      <section id="build-view" class="build-view" hidden>
+        <div class="build-header">
+          <div>
+            <p id="build-platform" class="eyebrow"></p>
+            <h2 id="build-title"></h2>
+            <p id="build-path" class="path"></p>
+            <p id="build-stats" class="stats"></p>
+          </div>
+          <div class="task-buttons">
+            <button id="copy-task-claude" type="button">Copy task for Claude Code</button>
+            <button id="copy-task-codex" type="button">Copy task for Codex</button>
+            <button id="rescan" type="button" class="secondary">Scan again</button>
+          </div>
+        </div>
+        <section class="investigation-question">
+          <label for="investigation-question">What would you like to investigate in this game?</label>
+          <textarea id="investigation-question" rows="2" maxlength="4000" placeholder="Describe the content or connection you want to investigate."></textarea>
+          <p class="hint">The task for Claude Code or Codex includes your question, the local findings and the investigation steps, including web research and map display.</p>
+        </section>
+        <details id="build-limits" class="limits">
+          <summary>Limits of this scan</summary>
+          <ul id="build-limit-list"></ul>
+        </details>
+        <section id="native-launch" class="native-launch" hidden></section>
+        <section id="directory-matches" class="directory-matches" hidden></section>
+        <div class="filters">
+          <div id="kind-filters" class="chips" role="group" aria-label="Filter by kind"></div>
+          <div class="filter-row">
+            <label>Show
+              <select id="status-filter">
+                <option value="findings">Possible cut content (findings)</option>
+                <option value="all">All content</option>
+                <option value="missing">Referenced but missing</option>
+                <option value="unreleased">Unreleased: candidates and supported findings</option>
+              </select>
+            </label>
+            <input id="search" type="search" placeholder="Search names…" aria-label="Search names">
+            <span id="result-count" class="hint"></span>
+          </div>
+        </div>
+        <div id="gallery" class="gallery" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="viewer" class="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+    <div class="viewer-top">
+      <div>
+        <p id="viewer-kind" class="eyebrow"></p>
+        <h2 id="viewer-title"></h2>
+      </div>
+      <div class="viewer-actions">
+        <button id="viewer-explore" type="button" hidden>Explore in 3D</button>
+        <button id="viewer-game" type="button" hidden disabled>Open in game</button>
+        <button id="viewer-task-claude" type="button" class="secondary">Copy task: Claude Code</button>
+        <button id="viewer-task-codex" type="button" class="secondary">Copy task: Codex</button>
+        <button id="viewer-close" type="button" class="secondary" aria-label="Close viewer">Close ✕</button>
+      </div>
+    </div>
+    <div class="viewer-body">
+      <div id="viewer-stage" class="viewer-stage"></div>
+      <aside id="viewer-details" class="viewer-details"></aside>
+    </div>
+  </div>
+
+  <div id="dialog" class="dialog" hidden role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+    <div class="dialog-box">
+      <div class="dialog-top">
+        <h2 id="dialog-title"></h2>
+        <button id="dialog-close" type="button" class="secondary">Close ✕</button>
+      </div>
+      <div id="dialog-content" class="dialog-content"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden role="status"></div>
+</body>
+</html>

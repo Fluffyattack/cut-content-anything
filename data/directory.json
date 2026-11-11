@@ -1,0 +1,176 @@
+{
+  "schema": "cutcontent.directory.v1",
+  "entries": [
+    {
+      "game": "LibreQuake",
+      "platforms": [
+        "PC"
+      ],
+      "engine": "Quake engine (id Tech 2)",
+      "item": "maps/dev.bsp",
+      "kind": "map",
+      "summary": "A developer test map shipped inside pak0.pak of the v0.09-beta Lite release. No exit, game-code reference or configuration in the checked data leads to it; it starts directly in the engine.",
+      "internal_names": [
+        "dev"
+      ],
+      "match": {
+        "titles": [
+          "LibreQuake"
+        ],
+        "codes": [],
+        "sha256": [
+          "0dd895a425e75d9908025dcfe340f75f5b8166ada68b2d7ee54d8d91d29378ff"
+        ]
+      },
+      "builds": [
+        {
+          "label": "v0.09-beta Lite, pak0.pak",
+          "identity": "sha256:0dd895a425e75d9908025dcfe340f75f5b8166ada68b2d7ee54d8d91d29378ff"
+        }
+      ],
+      "evidence": {
+        "present_in_data": {
+          "answer": "yes",
+          "basis": "Stored as maps/dev.bsp in pak0.pak; the PAK matches the official release ZIP by full SHA-256."
+        },
+        "possibly_unused": {
+          "answer": "yes",
+          "basis": "No route in the checked exit graph from 'start', no literal game-code reference and no configuration reference (bounded static analysis)."
+        },
+        "loaded_under_test": {
+          "answer": "yes",
+          "basis": "Started directly on 'dev' in a separately built browser engine; actual horizontal player movement of about 848 map units was observed."
+        },
+        "reachable_in_normal_play": {
+          "answer": "unknown",
+          "basis": ""
+        }
+      },
+      "release": {
+        "status": "released",
+        "scope": "asset_distribution",
+        "basis": "Included in the official v0.09-beta Lite release archive; a regular playable route was not established."
+      },
+      "quality": "runtime-verified",
+      "verified_with_this_project": true,
+      "write_up": "games/librequake/README.md",
+      "notes": "Free data (BSD 3-Clause art, GPL game code), so this case is published as the project's reference demo.",
+      "sources": [
+        "https://github.com/lavenderdotpet/LibreQuake/releases/tag/v0.09-beta"
+      ],
+      "checked": "2026-11-10"
+    },
+    {
+      "game": "LibreQuake",
+      "platforms": [
+        "PC"
+      ],
+      "engine": "Quake engine (id Tech 2)",
+      "item": "sound/player/slmbrn2.wav",
+      "kind": "audio",
+      "summary": "A player sound stored in pak0.pak that nothing references. The game code asks for the almost identical name sound/player/slimbrn2.wav, which is missing from the data, so a spelling difference probably leaves this sound unused.",
+      "internal_names": [
+        "slmbrn2",
+        "slimbrn2"
+      ],
+      "match": {
+        "titles": [
+          "LibreQuake"
+        ],
+        "codes": [],
+        "sha256": [
+          "0dd895a425e75d9908025dcfe340f75f5b8166ada68b2d7ee54d8d91d29378ff"
+        ]
+      },
+      "builds": [
+        {
+          "label": "v0.09-beta Lite, pak0.pak",
+          "identity": "sha256:0dd895a425e75d9908025dcfe340f75f5b8166ada68b2d7ee54d8d91d29378ff"
+        }
+      ],
+      "evidence": {
+        "present_in_data": {
+          "answer": "yes",
+          "basis": "Stored as sound/player/slmbrn2.wav in pak0.pak (8286 bytes)."
+        },
+        "possibly_unused": {
+          "answer": "yes",
+          "basis": "The name does not occur in progs.dat, qwprogs.dat, any level entity or the engine's own file list; game code references the missing sound/player/slimbrn2.wav instead."
+        },
+        "loaded_under_test": {
+          "answer": "unknown",
+          "basis": ""
+        },
+        "reachable_in_normal_play": {
+          "answer": "unknown",
+          "basis": ""
+        }
+      },
+      "release": {
+        "status": "released",
+        "scope": "asset_distribution",
+        "basis": "Included in the official v0.09-beta Lite release archive."
+      },
+      "quality": "data-verified",
+      "verified_with_this_project": true,
+      "write_up": "games/librequake/README.md",
+      "notes": "Next step: play the sound in the actual engine (for example through a test map that triggers it) and check whether the game code's misspelled name is a typo upstream.",
+      "sources": [
+        "https://github.com/lavenderdotpet/LibreQuake/releases/tag/v0.09-beta"
+      ],
+      "checked": "2026-11-11"
+    },
+    {
+      "game": "Quake",
+      "year": 1996,
+      "platforms": [
+        "PC"
+      ],
+      "engine": "Quake engine (id Tech 2)",
+      "item": "monster_ogre_marksman",
+      "kind": "enemy",
+      "summary": "A spawn function for an 'Ogre Marksman' enemy. In the game code that id Software published under the GPL, it only calls the normal Ogre's spawn function, so a level placing it gets an ordinary Ogre.",
+      "internal_names": [
+        "monster_ogre_marksman",
+        "Ogre Marksman"
+      ],
+      "match": {
+        "titles": [
+          "Quake"
+        ],
+        "codes": [],
+        "sha256": []
+      },
+      "builds": [],
+      "evidence": {
+        "present_in_data": {
+          "answer": "unknown",
+          "basis": "Not yet checked in a shipped progs.dat; the published source file quakec/monsters/ogre.qc defines it."
+        },
+        "possibly_unused": {
+          "answer": "unknown",
+          "basis": ""
+        },
+        "loaded_under_test": {
+          "answer": "unknown",
+          "basis": ""
+        },
+        "reachable_in_normal_play": {
+          "answer": "unknown",
+          "basis": ""
+        }
+      },
+      "release": {
+        "status": "unknown",
+        "basis": ""
+      },
+      "quality": "source-reports",
+      "verified_with_this_project": false,
+      "notes": "Open work: identify an owned 1996 build, confirm the function in its progs.dat, check every shipped level's entities for the class name, and spawn it in the actual engine. The published source is the later re-release QuakeC, so compare it with the original build before relying on it.",
+      "sources": [
+        "https://github.com/id-Software/quake-rerelease-qc/blob/main/quakec/monsters/ogre.qc"
+      ],
+      "checked": "2026-11-11"
+    }
+  ]
+}

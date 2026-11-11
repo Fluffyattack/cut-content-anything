@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play selected level · Cut Content Anything</title>
+  <link rel="stylesheet" href="player.css">
+  <script src="player.js" defer></script>
+</head>
+<body>
+  <div class="controls">
+    <strong id="level-name">Starting Qwasm…</strong>
+    <span>Click to look · W A S D move · Space jump · mouse / Ctrl fire · Esc menu</span>
+  </div>
+  <p id="status" role="status">Loading the selected game's data…</p>
+  <canvas id="canvas" width="640" height="480" tabindex="0" aria-label="Playable level"></canvas>
+  <details id="engine-log"><summary>Engine messages</summary><pre id="output"></pre></details>
+</body>
+</html>
