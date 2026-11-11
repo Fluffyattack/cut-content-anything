@@ -242,7 +242,7 @@ separate, source-backed check.
   [runtime verification](playbook/runtime-verification.md) · [release history](playbook/release-history.md) ·
   [evidence model](playbook/evidence-model.md) · [gallery and scenes](playbook/gallery-and-scenes.md) ·
   [several agents](playbook/multi-agent-workflows.md) · [tools](playbook/tools.md) · [lessons](playbook/lessons.md)
-- [DIRECTORY.md](DIRECTORY.md) and its [schema](data/SCHEMA.md) · [templates](templates)
+- [DIRECTORY.md](DIRECTORY.md) and its [schema](data/SCHEMA.md) · [templates](templates) · [next steps](docs/NEXT_STEPS.md)
 - Tool internals: [architecture](docs/ARCHITECTURE.md) · [formats](docs/FORMAT_SUPPORT.md) ·
   [game launch](docs/GAME_LAUNCH.md) · [local interpreter](docs/LOCAL_INTERPRETER.md) ·
   [question-led investigations](docs/QUESTION_LED_INVESTIGATIONS.md) · [decisions](docs/adr) ·
